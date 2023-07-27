@@ -12,10 +12,8 @@ import java.util.List;
 
 @RestController
 public class Personview {
-
-    List<Person> persons = new ArrayList<>();
-    int id = 0;
-
+@A
+    Controller controller;
     @GetMapping("/person")
     public Person findPerson(@PathParam("id") int id, @PathParam("name") String name) {
         for (Person p : persons) {
