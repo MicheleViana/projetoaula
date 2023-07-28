@@ -1,4 +1,4 @@
-package br.org.sesisenai.projetoaula.model;
+package appwebsenai1.projetoaula.model;
 
 public class Person {
 
