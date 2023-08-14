@@ -1,29 +1,37 @@
 package projetoaula.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Transient;
+import javax.persistence.*;
 
 @Entity
+@Table(name ="conta")
 public class ContaCorrentePF extends Conta{
     @Id
+    @Column(name = "numero conta")
     private Long numeroConta;
     @OneToOne
     private Person pessoa;
 
     private Double saldo;
-
+    @Column(name ="type")
     private AccountType accountType;
 
     @Transient
     private String error;
 
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
+    }
+
+
     public AccountType getAccountType() {
         return accountType;
     }
 
-    public void setAccountType(AccountType accountType) {
+    public static void setAccountType(AccountType accountType) {
         this.accountType = accountType;
     }
 
@@ -31,11 +39,11 @@ public class ContaCorrentePF extends Conta{
         this.numeroConta = numeroConta;
     }
 
-    public Person getPessoa() {
+    public Person getPerson() {
         return pessoa;
     }
 
-    public void setPessoa(Person pessoa) {
+    public void setPerson(Person pessoa) {
         this.pessoa = pessoa;
     }
 
@@ -53,19 +61,4 @@ public class ContaCorrentePF extends Conta{
         return numeroConta;
     }
 
-    public String getError() {
-        return error;
-    }
-
-    public void setError(String error) {
-        this.error = error;
-    }
-
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
-    }
 }

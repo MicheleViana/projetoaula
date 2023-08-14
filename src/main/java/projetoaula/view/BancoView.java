@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import projetoaula.contoller.BancoController;
+import projetoaula.model.AccountType;
 import projetoaula.model.Conta;
 import projetoaula.model.ContaCorrentePF;
 
@@ -16,25 +17,28 @@ public class BancoView<conta> {
     @Autowired
     private BancoController bancoController;
 
-    @GetMapping("/consultasaldo")
-    public Double consultaSaldo() {
-        Conta conta = new ContaCorrentePF();
-        conta.setSaldo(100D);
-        return bancoController.consultaSaldo(conta);
-
-
-    }
-
     @PostMapping("/criarconta")
-    public Conta criarconta(@PathParam("name") String name) {
-        bancoController.criarconta(name);
-        return null;
+    public Conta criarconta(@PathParam("name") String name,@PathParam("type") String AccountType) throws Exception {
+        String accountType = null;
+        return bancoController.criarconta(name, AccountType);
+
     }
 
     @GetMapping("/type")
-    public String listAccounttype() {
-        return null;
+    public String listAccountType() {
+        String text = AccountType.CONTA_CORRENTE + "," + AccountType.CONTA_POUPANCA;
+        return text;
+
+    }
+
+
+    @GetMapping("/consultaconta")
+    public ContaCorrentePF consultaConta(@PathParam("name") String name ){
+        return bancoController.consultaconta(conta);
+
+
     }
 }
+
 
 
