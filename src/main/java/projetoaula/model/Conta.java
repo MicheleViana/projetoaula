@@ -12,17 +12,21 @@ public abstract class Conta {
 
     private Double saldo;
 
+    public Long getNumeroConta() {
+        return numeroConta;
+    }
 
     public void setNumeroConta(Long numeroConta) {
         this.numeroConta = numeroConta;
     }
 
+
+
+    public void setPerson(Person person) {
+        this.pessoa = getPessoa();
+    }
     public Person getPessoa() {
         return pessoa;
-    }
-
-    public void setPessoa(Person pessoa) {
-        this.pessoa = pessoa;
     }
 
     public Double getSaldo() {
@@ -34,7 +38,6 @@ public abstract class Conta {
     }
 
 
-    public void setPerson(Person person) {
-    }
+
 
 }

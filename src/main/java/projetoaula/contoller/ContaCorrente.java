@@ -1,16 +1,21 @@
 package projetoaula.contoller;
 
+import projetoaula.model.AccountType;
 import projetoaula.model.Conta;
+import projetoaula.model.ContaCorrentePF;
+import projetoaula.model.Person;
 
-public interface ContaCorrente {
+import javax.persistence.*;
+import java.util.Date;
 
-  Double sacar (Double quantidade, Conta conta);
 
-    void depositar (Double quantidade,Conta conta);
+public interface ContaCorrente{
+    Double sacar(Double quantidade, Conta conta);
 
-    void transferir (Double quantidade,Conta conta);
+    void depositar(Double quantidade, Conta conta);
 
-   Double consultaSaldo (Conta conta);
+    String transferir(Long contaOrigem, Long contaDestino, Double valor);
 
+    Double consultaSaldo(ContaCorrentePF conta);
 
 }
