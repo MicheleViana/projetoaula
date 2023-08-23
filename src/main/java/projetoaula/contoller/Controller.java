@@ -18,7 +18,7 @@ import java.util.List;
        public Person findPerson(String name){
            List<Person> persons = (List<Person>) personRepository.findAll();
            for(Person person : persons){
-               if(person.getName().equals(name)){
+               if(name.equals(person.getName())){
                    return person;
                }
            }

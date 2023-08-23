@@ -20,9 +20,9 @@ public class BancoView<conta> {
     private BancoController bancoController;
 
     @PostMapping("/criarconta")
-    public Conta criarconta(@PathParam("name") String name,@PathParam("type") String AccountType) throws Exception {
+    public ContaCorrentePF criarconta(@PathParam("name") String name,@PathParam("type") String type) throws Exception {
         String accountType = null;
-        return bancoController.criarconta(name, AccountType);
+        return bancoController.criarconta(name, type);
 
     }
 

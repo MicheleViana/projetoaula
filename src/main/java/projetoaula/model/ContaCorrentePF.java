@@ -6,30 +6,56 @@ import java.util.Date;
 
 @Entity
 @Table(name ="conta")
-public abstract class ContaCorrentePF extends Conta {
+public class ContaCorrentePF {
 
     @Id
-    @Column(name = "numero conta")
+    @Column(name = "numero_conta")
     private Long numeroConta;
     @OneToOne
+    @JoinColumn(name = "person_id")
     private Person pessoa;
 
     private Double saldo;
     @Column(name = "type")
     private AccountType accountType;
 
+
     @Transient
     private String error;
 
-
+@Transient
     public Date dataAtualizacao;
 
-    public Date getDataAtualizacao() {
-        return dataAtualizacao;
+    public Long getNumeroConta() {
+        return numeroConta;
     }
 
-    public void setDataAtualizacao(Date dataAtualizacao) {
-        this.dataAtualizacao = dataAtualizacao;
+    public void setNumeroConta(Long numeroConta) {
+        this.numeroConta = numeroConta;
+    }
+
+    public Person getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Person pessoa) {
+        this.pessoa = pessoa;
+    }
+
+    public Double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(Double saldo) {
+        this.saldo = saldo;
+    }
+
+    public AccountType getAccountType() {
+        return accountType;
+    }
+
+    public void setAccountType(AccountType accountType) {
+        this.accountType = accountType;
     }
 
     public String getError() {
@@ -40,50 +66,13 @@ public abstract class ContaCorrentePF extends Conta {
         this.error = error;
     }
 
-    public void setAccountType(AccountType accountType) {
-        this.accountType = accountType;
+    public Date getDataAtualizacao() {
+        return dataAtualizacao;
     }
 
-    public AccountType getAccountType() {
-        return accountType;
+    public void setDataAtualizacao(Date dataAtualizacao) {
+        this.dataAtualizacao = dataAtualizacao;
     }
-
-
-    public void setNumeroConta(Long numeroConta) {
-        this.numeroConta = numeroConta;
-    }
-
-    public Long getNumeroConta() {
-        return numeroConta;
-    }
-
-    public Person getPerson() {
-        return pessoa;
-    }
-
-    public void setPerson(Person pessoa) {
-        this.pessoa = pessoa;
-    }
-
-    public Double getSaldo() {
-        return saldo;
-
-    }
-
-    @OneToOne
-    private Person person;
-
-    public void setSaldo(Double saldo) {
-        this.saldo = saldo;
-    }
-
-    public abstract Double sacar(Double quantidade, Conta conta);
-
-    public abstract void depositar(Double quantidade, Conta conta);
-
-    public abstract String transferir(Long contaOrigem, Long contaDestino, Double valor);
-
-    public abstract Double consultaSaldo(ContaCorrentePF conta);
 }
 
 
